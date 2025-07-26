@@ -137,25 +137,26 @@
   <p>ひらがなを入力して変換。クエスチョンマーク除きバージョンもあります。</p>
   <div class="sample-buttons">
     <h3>📋 サンプルを使う</h3>
-    <button on‍click="copySample('あんああああああああああああああああああああああああああああああああああああ')">あんああああああああああああああああああああああああああああああああああああ </button>
-    <button on‍click="copySample('んんんんんんんんんんぎぃいいいいいいいいいいいいいいいいいいいいいいいいい')">んんんんんんんんんんぎぃいいいいいいいいいいいいいいいいいいいいいいいいい </button>
-    <button on‍click="copySample('おんにょぉおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおお')">おんにょぉおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおお </button>
+    <button onclick="copySample('あんああああああああああああああああああああああああああああああああああああ')">あんああああああああああああああああああああああああああああああああああああ </button>
+    <button onclick="copySample('んんんんんんんんんんぎぃいいいいいいいいいいいいいいいいいいいいいいいいい')">んんんんんんんんんんぎぃいいいいいいいいいいいいいいいいいいいいいいいいい </button>
+    <button onclick="copySample('おんにょぉおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおお')">おんにょぉおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおお </button>
   </div>
   <label for="in">🔤 入力欄（ペーストして変換）</label>
   <input id="in" type="text" placeholder="ここにひらがなを入力またはペーストしてください" />
   <div class="btn-group">
-    <input type="button" value="変換する（記号あり）" on‍click="convert();" />
-    <input type="button" value="変換する（？なし）" on‍click="convertNoQuestion();" />
-    <input type="button" value="クリア" on‍click="document.getElementById('in').value = '';" />
+    <input type="button" value="変換する（記号あり）" onclick="convert();" />
+    <input type="button" value="変換する（？なし）" onclick="convertNoQuestion();" />
+    <input type="button" value="クリア" onclick="document.getElementById('in').value = '';" />
   </div>
   <label for="out">📝 変換結果（クリックで全選択）</label>
   <textarea id="out" placeholder="ここに変換結果が表示されます"></textarea>
+  <input type="button" value="結果をクリア" onclick="document.getElementById('out').value = '';" />
 
   <div class="heart-dictionary">
     <h3>💖 ハート辞典</h3>
-    <button on‍click="copyHearts('💞')">💞 を40個コピー</button>
-    <button on‍click="copyHearts('💋')">💋 を40個コピー</button>
-    <button on‍click="copyHearts('💕')">💕 を40個コピー</button>
+    <button onclick="copyHearts('💞')">💞 を40個コピー</button>
+    <button onclick="copyHearts('💋')">💋 を40個コピー</button>
+    <button onclick="copyHearts('💕')">💕 を40個コピー</button>
   </div>
 </body>
 </html>
