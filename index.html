@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>ひらがな変換ツール（？なし版あり） + ハート辞典</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      background-color: #f9f9f9;
+      max-width: 800px;
+      margin: auto;
+    }
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 8px;
+      font-size: 16px;
+      margin-top: 8px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
+    #in {
+      margin-bottom: 16px;
+    }
+    .btn-group {
+      margin-bottom: 16px;
+    }
+    button,
+    input[type="button"] {
+      padding: 8px 12px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-right: 10px;
+      margin-bottom: 8px;
+    }
+    textarea {
+      height: 150px;
+      cursor: pointer;
+    }
+    .sample-buttons {
+      margin-bottom: 15px;
+    }
+    .heart-dictionary {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 2px solid #ccc;
+    }
+    .heart-dictionary h3 {
+      margin-bottom: 10px;
+    }
+  </style>
+  <script>
+    function convert() {
+      var c = document.getElementById("in").value.split("");
+      var kana_a = "あかさたなはまやらわがざだばぱ";
+      var kana_i = "いきしちにひみりぎじぢびぴ";
+      var kana_u = "うくすつぬふむゆるぐずづぶぷ";
+      var kana_e = "えけせてねへめれげぜでべぺ";
+      var kana_o = "おこそとのほもろをごぞどぼぽ";
+      for (var i = 0; i < c.length; i++) {
+        var g = "っ…！？";
+        if (kana_a.indexOf(c[i]) != -1) {
+          g += "あぁ";
+        } else if (kana_i.indexOf(c[i]) != -1) {
+          g += "いぃ";
+        } else if (kana_u.indexOf(c[i]) != -1) {
+          g += "うぅ";
+        } else if (kana_e.indexOf(c[i]) != -1) {
+          g += "えぇ";
+        } else if (kana_o.indexOf(c[i]) != -1) {
+          g += "おぉ";
+        }
+        var h = Math.floor(Math.random() * 5);
+        for (var j = 0; j < h; j++) {
+          c[i] = c[i] + g.charAt(Math.floor(Math.random() * g.length));
+        }
+      }
+      document.getElementById("out").value = c.join("");
+    }
+
+    function convertNoQuestion() {
+      var c = document.getElementById("in").value.split("");
+      var kana_a = "あかさたなはまやらわがざだばぱ";
+      var kana_i = "いきしちにひみりぎじぢびぴ";
+      var kana_u = "うくすつぬふむゆるぐずづぶぷ";
+      var kana_e = "えけせてねへめれげぜでべぺ";
+      var kana_o = "おこそとのほもろをごぞどぼぽ";
+      for (var i = 0; i < c.length; i++) {
+        var g = "っ…！";
+        if (kana_a.indexOf(c[i]) != -1) {
+          g += "あぁ";
+        } else if (kana_i.indexOf(c[i]) != -1) {
+          g += "いぃ";
+        } else if (kana_u.indexOf(c[i]) != -1) {
+          g += "うぅ";
+        } else if (kana_e.indexOf(c[i]) != -1) {
+          g += "えぇ";
+        } else if (kana_o.indexOf(c[i]) != -1) {
+          g += "おぉ";
+        }
+        var h = Math.floor(Math.random() * 5);
+        for (var j = 0; j < h; j++) {
+          c[i] = c[i] + g.charAt(Math.floor(Math.random() * g.length));
+        }
+      }
+      document.getElementById("out").value = c.join("");
+    }
+
+    function copySample(text) {
+      navigator.clipboard.writeText(text).catch(function (err) {
+        alert("コピーに失敗しました");
+      });
+    }
+
+    function copyHearts(emoji) {
+      const text = emoji.repeat(40);
+      navigator.clipboard.writeText(text).catch(function (err) {
+        alert("コピーに失敗しました");
+      });
+    }
+
+    window.onload = function () {
+      var outArea = document.getElementById("out");
+      var inArea = document.getElementById("in");
+      outArea.addEventListener("click", function () {
+        this.select();
+      });
+      inArea.addEventListener("click", function () {
+        this.select();
+      });
+    };
+  </script>
+</head>
+<body>
+  <h1>ひらがな変換ツール（？なし版あり） + ハート辞典</h1>
+  <p>ひらがなを入力して変換。クエスチョンマーク除きバージョンもあります。</p>
+  <div class="sample-buttons">
+    <h3>📋 サンプルを使う</h3>
+    <button on‍click="copySample('あんああああああああああああああああああああああああああああああああああああ')">あんああああああああああああああああああああああああああああああああああああ </button>
+    <button on‍click="copySample('んんんんんんんんんんぎぃいいいいいいいいいいいいいいいいいいいいいいいいい')">んんんんんんんんんんぎぃいいいいいいいいいいいいいいいいいいいいいいいいい </button>
+    <button on‍click="copySample('おんにょぉおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおお')">おんにょぉおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおお </button>
+  </div>
+  <label for="in">🔤 入力欄（ペーストして変換）</label>
+  <input id="in" type="text" placeholder="ここにひらがなを入力またはペーストしてください" />
+  <div class="btn-group">
+    <input type="button" value="変換する（記号あり）" on‍click="convert();" />
+    <input type="button" value="変換する（？なし）" on‍click="convertNoQuestion();" />
+    <input type="button" value="クリア" on‍click="document.getElementById('in').value = '';" />
+  </div>
+  <label for="out">📝 変換結果（クリックで全選択）</label>
+  <textarea id="out" placeholder="ここに変換結果が表示されます"></textarea>
+
+  <div class="heart-dictionary">
+    <h3>💖 ハート辞典</h3>
+    <button on‍click="copyHearts('💞')">💞 を40個コピー</button>
+    <button on‍click="copyHearts('💋')">💋 を40個コピー</button>
+    <button on‍click="copyHearts('💕')">💕 を40個コピー</button>
+  </div>
+</body>
+</html>
